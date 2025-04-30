@@ -35,3 +35,34 @@ public:
 
     User(string u, string p) : username(u), password(p), next(nullptr) {}
 };
+class UserList {
+    User* head;
+public:
+    UserList() : head(nullptr) {}
+
+    void registerUser(string username, string password) {
+        User* newUser = new User(username, password);
+        newUser->next = head;
+        head = newUser;
+    }
+
+    bool loginUser(string username, string password) {
+        User* temp = head;
+        while (temp) {
+            if (temp->username == username && temp->password == password) {
+                return true;
+            }
+            temp = temp->next;
+        }
+        return false;
+    }
+
+    void displayUsers() {
+        cout << "Registered Users:\n";
+        User* temp = head;
+        while (temp) {
+            cout << "- " << temp->username << endl;
+            temp = temp->next;
+        }
+    }
+};
