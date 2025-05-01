@@ -67,7 +67,6 @@ class ExamSystem {
     int totalQuestions;
 public:
     ExamSystem() : totalQuestions(0) {}
-
     void menu() {
         int choice;
         string username, password;
@@ -114,7 +113,6 @@ public:
         cout << "Enter number of questions you want to add: ";
         cin >> totalQuestions;
         cin.ignore();
-
         for (int i = 0; i < totalQuestions; i++) {
             string qText, opts[4];
             int correct;
@@ -141,7 +139,6 @@ public:
         while (true) {
             cout << "\nQuestion " << current + 1 << ":\n";
             questions[current].display();
-
             cout << "Your previous answer: ";
             if (answers[current] != 0)
                 cout << answers[current] << endl;
@@ -150,7 +147,6 @@ public:
             cout << "\nOptions:\n1. Answer\n2. Previous Question\n3. Next Question\n4. Submit Exam\nEnter choice: ";
             int action;
             cin >> action;
-
             if (action == 1) {
                 cout << "Enter your answer (1-4): ";
                 cin >> answers[current];
