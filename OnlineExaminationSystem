@@ -5,19 +5,19 @@
 using namespace std;
 class Question {
 public:
-    string questionText;
+    string question;
     string options[4];
     int correctOption;
     Question() {}
     Question(string q, string opts[], int correct) {
-        questionText = q;
+        question = q;
         for (int i = 0; i < 4; i++) {
             options[i] = opts[i];
         }
         correctOption = correct;
     }
     void display() {
-        cout << questionText << endl;
+        cout << question<< endl;
         for (int i = 0; i < 4; i++) {
             cout << i + 1 << ". " << options[i] << endl;
         }
@@ -70,10 +70,10 @@ public:
     void menu() {
         int choice;
         string username, password;
-        inputQuestions(); // Admin inputs questions at start
+        inputQuestions();
         while (true) {
-            cout << "\n--- Online Examination System ---\n";
-            cout << "1. Register\n2. Login\n3. View Users\n4. Exit\nEnter choice: ";
+            cout << " Online Examination System";
+            cout << "1. Register  2. Login  3. View User  4. Exit  Enter choice: ";
             cin >> choice;
             if (choice == 1) {
                 cout << "Enter username: ";
@@ -89,7 +89,7 @@ public:
                 cout << "Enter password: ";
                 cin >> password;
                 if (users.loginUser(username, password)) {
-                    cout << "Login successful! Adding to exam queue...\n";
+                    cout << "Login successful! Adding to exam queue";
                     examQueue.push(username);
                     startExam();
                 }
@@ -104,10 +104,10 @@ public:
                 break;
             }
             else {
-                cout << "Invalid choice.\n";
+                cout << "Invalid choice.";
             }
         }
-        displayHistory(); // At end, show exam history
+        displayHistory(); 
     }
     void inputQuestions() {
         cout << "Enter number of questions you want to add: ";
@@ -132,7 +132,7 @@ public:
         if (examQueue.empty()) return;
         string currentUser = examQueue.front();
         examQueue.pop();
-        cout << "\nStarting exam for " << currentUser << "...\n";
+        cout << "Starting exam for " << currentUser << " ";
         int answers[100] = {0};
         stack<int> history;
         int current = 0;
@@ -143,8 +143,8 @@ public:
             if (answers[current] != 0)
                 cout << answers[current] << endl;
             else
-                cout << "None\n";
-            cout << "\nOptions:\n1. Answer\n2. Previous Question\n3. Next Question\n4. Submit Exam\nEnter choice: ";
+                cout << "None";
+            cout << "Options: 1. Answer 2. Previous Question 3. Next Question 4. Submit Exam  Enter choice: ";
             int action;
             cin >> action;
             if (action == 1) {
@@ -186,7 +186,7 @@ public:
         examHistory.push(currentUser + " scored " + to_string(score) + "/" + to_string(totalQuestions));
     }
     void displayHistory() {
-        cout << "\n--- Exam History ---\n";
+        cout << " Exam History ";
         while (!examHistory.empty()) {
             cout << examHistory.top() << endl;
             examHistory.pop();
