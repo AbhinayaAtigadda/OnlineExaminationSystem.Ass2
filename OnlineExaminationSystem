@@ -124,7 +124,6 @@ public:
 
             cout << "\nEnter question " << i + 1 << " text: ";
             getline(cin, qText);
-
             for (int j = 0; j < 4; j++) {
                 cout << "Enter option " << j + 1 << ": ";
                 getline(cin, opts[j]);
@@ -132,17 +131,14 @@ public:
             cout << "Enter correct option number (1-4): ";
             cin >> correct;
             cin.ignore();
-
             questions[i] = Question(qText, opts, correct);
         }
     }
     void startExam() {
         if (examQueue.empty()) return;
-
         string currentUser = examQueue.front();
         examQueue.pop();
         cout << "\nStarting exam for " << currentUser << "...\n";
-
         int answers[100] = {0};
         stack<int> history;
         int current = 0;
