@@ -191,7 +191,7 @@ public:
             cout << examHistory.top() << endl;
             examHistory.pop();
         }
-        cout << "Thank you for using the system!\n";
+        cout << "Examination is done.";
     }
 };
 int main() {
